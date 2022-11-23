@@ -31,8 +31,12 @@ const AppRoutes = () =>{
                 navigation={navigation} route={route} options={options} back={back}
                 />
               );
-            }
-            }}>
+            },
+            gestureEnabled:true
+
+            }}
+            initialRouteName='Songs List'
+            >
               <Stack.Group>
                 <Stack.Screen
                   name="Songs List"

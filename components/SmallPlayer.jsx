@@ -1,13 +1,20 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {PlayerContext} from '../context/PlayerContext';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlay} from '@fortawesome/free-solid-svg-icons/faPlay';
 import {faForward, faPause} from '@fortawesome/free-solid-svg-icons';
 import ProgressBar from './ProgressBar';
+import {navigationRef} from '../Routes';
 
 const SmallPlayer = () => {
   const {player, setPlayer} = useContext(PlayerContext);
+  const navigation = navigationRef
+  const handleOpen = ()=>{
+    if (navigation.isReady()) {
+      navigation.navigate('Player')
+    }
+  }
   const BUTTONS = [
     {
       name: 'Play',
@@ -47,7 +54,6 @@ const SmallPlayer = () => {
     <View
       style={{
         ...styles.smallPlayerContainer,
-        display: player.mode == 'small' ? 'flex' : 'none',
       }}>
       {/**ProgressBar**/}
       <ProgressBar total={player.totalSongTime} />
@@ -79,10 +85,10 @@ const SmallPlayer = () => {
           })}
         </View>
         {/**Song Name**/}
-        <View style={styles.songDetailesContainer}>
+        <TouchableOpacity onPress={handleOpen} style={styles.songDetailesContainer}>
           <Text style={styles.buttonText}>{player.currentSong}</Text>
           <Text>{player.artist}</Text>
-        </View>
+        </TouchableOpacity>
         {/**Songs Image**/}
         <View style={styles.songImageContainer}>
           <Image source={{uri: player.smallCover}} style={styles.songImage} />

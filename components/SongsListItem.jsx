@@ -4,12 +4,17 @@ import React from 'react';
 const SongsListItem = ({
   songName,
   artist = 'Unknown artist',
+  mbid='',
   image,
+  add = false,
+  onLongPress = e => console.log('long: ' + e),
   onPress = e => console.log(e),
 }) => {
   return (
     <TouchableOpacity
       onPress={() => onPress(songName)}
+      id={mbid}
+      onLongPress={add ? () => onLongPress(mbid) : null}
       style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.bigText}>

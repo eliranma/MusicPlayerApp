@@ -16,6 +16,7 @@ const ProgressBar = ({total}) => {
   };
   useEffect(() => {
     // console.log(player);
+    if (player.totalSongTime !== total) setPlayer({...player,totalSongTime:total})
     const interval = setInterval(() => {
       if (player.play && player.currentTime < total) {
         setPlayer({...player, currentTime: player.currentTime + 1000});

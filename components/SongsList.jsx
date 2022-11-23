@@ -57,6 +57,8 @@ const SongsList = ({sortBy = 'ABC', songsList}) => {
       bigCover: songSelected.covers.large,
       artist: songSelected.artist,
       currentSong: songSelected.name,
+      album: songSelected.albumName,
+      mode:'small'
     });
   };
   // useEffect(() => {
@@ -73,6 +75,7 @@ const SongsList = ({sortBy = 'ABC', songsList}) => {
             songName={item}
             artist={getSongByName(item).artist}
             image={getSongByName(item).covers.small}
+            
           />
         )}
         renderSectionHeader={({section}) => (

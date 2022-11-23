@@ -16,13 +16,14 @@ const PlayerProvider = ({children})=>{
         nextSong:'',
         smallCover:'',
         bigCover:'',
-        mode:'small'
+        mode:'small',
+        album:''
     })
     
     return (
         <PlayerContext.Provider value={{player, setPlayer}}>
         {children}
-        <SmallPlayer />
+        {player.mode=='small'?<SmallPlayer />:null}
         </PlayerContext.Provider>
     )
 }

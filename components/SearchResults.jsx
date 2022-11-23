@@ -9,7 +9,7 @@ const SearchResults = ({results=[]}) => {
     <View>
       <FlatList
         data={results}
-        renderItem={({item}) => <SongsListItem songName={item.name} artist={item.artist||''} image={item.covers.small||''}/>}
+        renderItem={({item}) => <SongsListItem songName={item.name} artist={item.artist||''} add={true} image={item.covers.small||''}/>}
   />
     </View>
   );

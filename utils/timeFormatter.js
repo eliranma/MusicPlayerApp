@@ -1,4 +1,5 @@
 export const msToTime = (num) =>{
+    if (typeof num === 'string') return num
      // 1- Convert to seconds:
      let seconds = num / 1000;
      // 2- Extract hours:
